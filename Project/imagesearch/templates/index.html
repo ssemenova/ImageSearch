@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="">
+  <meta name="author" content="">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Karla:400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<link rel="stylesheet" href="{% static 'imagesearch/css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'imagesearch/css/skeleton.css' %}">
+<link rel="stylesheet" href="{% static 'imagesearch/css/custom.css' %}">
+
+
+<body>
+  <div class="title">
+    <h1>ImageSearch</h1>
+  </div>
+  <div class="container">
+    <div class="row maincontent">
+      <div class="five columns leftcol">
+        <h2>Upload Image</h2>
+        <h3> and choose action </h3>
+
+        <form action="/upload-image/" method="post">
+          {% csrf_token %}
+          {{ form_upload }}
+          <input class="button-primary" type="submit" value="Submit ➡️">
+        </form>
+
+      </div>
+      <div class="two columns centercol">
+        OR
+      </div>
+      <div class="five columns rightcol">
+        <h2>Search Photos</h4>
+          Find all photos from 
+        <form action="/search-images/" method="post">
+          {% csrf_token %}
+          {{ form_search }}
+          <input class="button-primary" type="submit" value="Submit ➡️">
+        </form>
+
+      </div>
+    </div>
+
+</body>
+
+</html>
