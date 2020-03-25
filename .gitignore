@@ -2,3 +2,5 @@
 */db.sqlite3
 .DS_Store
 */.DS_Store
+static/db_images
+static/query_images

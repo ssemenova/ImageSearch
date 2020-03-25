@@ -27,14 +27,43 @@
     <h1>ImageSearch</h1>
   </div>
   <div class="container">
+    {% if error %}
+    <div class="row">
+      <div class="twelve columns warning">
+        An error occurred, try again.
+      </div>
+    </div>
+    {% endif %}
     <div class="row maincontent">
       <div class="five columns leftcol">
-        <h2>Upload Image</h2>
-        <h3> and choose action </h3>
+        <h2>Choose a query image</h2>
+        <h3> and query </h3>
 
         <form action="/upload-image/" method="post">
           {% csrf_token %}
-          {{ form_upload }}
+          <div class="radio_section_title"><b>Image:</b></div>
+          <div class="img_input">
+            <input type="radio" name='img_input' id="img1" value="img1"><label for="img1"></label><br>
+            <input type="radio" name='img_input' id="img2" value="img2"><label for="img2"></label><br>
+            <input type="radio" name='img_input' id="img3" value="img3"><label for="img3"></label><br>
+            <input type="radio" name='img_input' id="img4" value="img4"><label for="img4"></label><br>
+            <input type="radio" name='img_input' id="img5" value="img5"><label for="img5"></label><br>
+            <input type="radio" name='img_input' id="img6" value="img6"><label for="img6"></label><br>
+            <input type="radio" name='img_input' id="img7" value="img7"><label for="img7"></label><br>
+            <input type="radio" name='img_input' id="img8" value="img8"><label for="img8"></label><br>
+            <input type="radio" name='img_input' id="img9" value="img9"><label for="img9"></label><br>
+            <input type="radio" name='img_input' id="img10" value="img10"><label for="img10"></label><br>
+            <input type="radio" name='img_input' id="img11" value="img11"><label for="img11"></label><br>
+            <input type="radio" name='img_input' id="img12" value="img12"><label for="img12"></label><br>
+          </div>
+          <div class="radio_section_title"><b>Query:</b></div>
+          <input type="radio" name='action' id="select1" value="select1">
+            <label for="select1">Get info about all people in this photo</label><br>
+          <input type="radio" name='action' id="select2" value="select2">
+            <label for="select2">Get all events that people in this photo have been in</label><br>
+          <input type="radio" name='action' id="select3" value="select3">
+            <label for="select3">Get all photos that people in this photo are in</label><br>
+
           <input class="button-primary" type="submit" value="Submit ➡️">
         </form>
 
@@ -45,7 +74,7 @@
       <div class="five columns rightcol">
         <h2>Search Photos</h4>
           Find all photos from 
-        <form action="/search-images/" method="post">
+        <form action="/search-images/" method="post" class="search_images_form">
           {% csrf_token %}
           {{ form_search }}
           <input class="button-primary" type="submit" value="Submit ➡️">

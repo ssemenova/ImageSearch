@@ -1,11 +1,10 @@
 from django import forms
-
-class UploadImageForm(forms.Form):
-  file = forms.FileField()
+from imagesearch.models import Event
 
 class SearchImagesForm(forms.Form):
-  
-  CHOICES=[('select1','Find all photos from event'),
-          ('select2','select 2')]
+    query = forms.ChoiceField(choices = [])
 
-  query = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
+    def __init__(self, *args, **kwargs):
+        super(SearchImagesForm, self).__init__(*args, **kwargs)
+        self.fields['query'].choices = [(x.pk, x.Name) for x in Event.objects.all()]
+        print(self.fields['query'].choices)
